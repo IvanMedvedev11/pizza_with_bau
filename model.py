@@ -1,3 +1,4 @@
+
 def add_user(data,number,name,age,surname):
     if any(user["number"] == number for user in data):
         print("Уже есть такой пользователь с этим номером.")
@@ -7,3 +8,5 @@ def add_user(data,number,name,age,surname):
 def save_data(filename, data):
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4)
+def custom_pizza(user_doping,user_count_dopings):
+    user_price = user_count_dopings * {user_doping['price']}
