@@ -1,4 +1,3 @@
-
 def add_user(data,number,name,age,surname):
     if any(user["number"] == number for user in data):
         print("Уже есть такой пользователь с этим номером.")
