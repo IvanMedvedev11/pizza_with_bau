@@ -24,6 +24,10 @@ def add_user(filename, number, name, age, surname):
 def save_data(filename, data):
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4)
-
-def custom_pizza(user_doping,user_count_dopings):
-    user_price = user_count_dopings * {user_doping['price']}
+def custom(user_doping, user_count_dopings, products):
+    for product in products:
+        if product['name'] == user_doping:
+            user_price = product['price'] * int(user_count_dopings)
+            return user_price
+    print(f"Допинг '{user_doping}' не найден.")
+    return 0
