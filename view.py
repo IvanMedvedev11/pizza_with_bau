@@ -1,6 +1,6 @@
 import json
-
-# Регистрируем пользователя
+from model import add_user
+from model import custom
 def register():
     # Запрашиваем данные у пользователя
     number = input("Введите номер телефона: ")
@@ -34,6 +34,7 @@ def custom_pizza():
         elif user_doping in [product['name'] for product in products]:
             user_count_doping = input(f"Сколько {user_doping} вы хотите взять: ")
             user_dopings[user_doping] = user_count_doping
+            custom(user_doping, user_count_doping, products)
         else:
             print("Такого продукта нет в списке. Пожалуйста, выберите из предложенных.")
 
@@ -69,4 +70,3 @@ def print_check(sum_of_pay, change, products):
             print(f"{product['pizza']}: {product['price']} X {product['count']}")
     print(f'Итого: {sum_of_pay} руб')
     print(f"Сдача: {change} руб")
-
