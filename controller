@@ -1,0 +1,7 @@
+
+from view import register
+from model import custom
+from view import custom_pizza
+def process_user_input():
+    register()
+    custom_pizza()
