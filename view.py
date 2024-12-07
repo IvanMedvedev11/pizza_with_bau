@@ -2,11 +2,23 @@ import json
 
 # Регистрируем пользователя
 def register():
-    name = input("Введите имя: ")
-    surname = input("Введите фамилию: ")
-    age = input("Введите возраст: ")
+    # Запрашиваем данные у пользователя
     number = input("Введите номер телефона: ")
-    return name, surname, age, number
+    name = input("Введите имя: ")
+    # Проверка на корректность возраста
+    while True:
+        age = input("Введите возраст: ")
+        if age.isdigit():  # Проверяем, что возраст - это число
+            age = int(age)
+            break
+        else:
+            print("Пожалуйста, введите корректный возраст (число).")
+    surname = input("Введите фамилию: ")
+    # Добавляем пользователя
+    if add_user('data.json', number, name, age, surname):
+        print("Регистрация прошла успешно.")
+    else:
+        print("Регистрация не удалась.")
 
 def custom_pizza():
     size = input("Выберите размер (38; 40; 45): ")
