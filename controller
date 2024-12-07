@@ -1,7 +1,28 @@
+from model import register_user
 
-from view import register
-from model import custom
-from view import custom_pizza
-def process_user_input():
-    register()
-    custom_pizza()
+def handle_user_registration():
+    user = register_user()
+    return user
+from model import choose_pizza, calculate_price
+
+def handle_pizza_selection():
+    user_pizzas = choose_pizza()
+    return user_pizzas
+
+def handle_payment(total_price):
+    amount = float(input("Введите сумму, которую вы хотите внести: "))
+    change = amount - total_price
+    if change < 0:
+        print("Недостаточно средств для оплаты.")
+        return None
+    return change
+def calculate_total_price(user_pizzas):
+    total_price = 0
+    for pizza, details in user_pizzas.items():
+        if 'size' in details:  # Кастомная пицца
+            price = calculate_price(details['size'], details['dopings'])
+            total_price += price
+        else:  # Обычная пицца
+            price = int(details['count']) * details['price']
+            total_price += price
+    return total_price
